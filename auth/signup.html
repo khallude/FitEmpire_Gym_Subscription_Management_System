@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us Now!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1F1F1F;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background: #8b8b8b;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(214, 253, 81, 0.35);
+            text-align: center;
+        }
+        .logo {
+            max-width: 100px;
+        }
+        h2 {
+            color: #000;
+        }
+        .basic-details {
+            margin-top: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            background-color: #e9ecef;
+            box-sizing: border-box;
+        }
+
+        .next-button {
+            width: 100%;
+            padding: 10px;
+            background: #D6FD51;
+            border: none;
+            color: #000;
+            font-size: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        .next-button:hover {
+            background: #b0e841;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            background-color: #8b8b8b;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 400px;
+            border-radius: 12px;
+        }
+        .close {
+            color: #fff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #ccc;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .pricing-details {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+}
+
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background: #D6FD51;
+            border: none;
+            color: #000;
+            font-size: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background: #b0e841;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="site-logo">
+        <a href="index.html"><img src="/../../logos/logo1.png" alt="logo" style="height: 6rem;" class="logo" id="logo1"></a>
+    </div>
+    <h2  style="color: #D6FD51; margin: 2px 0;">Sign Up</h2>
+
+    <div class="basic-details">
+        <h3 style="color: #fff; margin: 1rem 0;">Basic Details</h3>
+        <form id="signup-form">
+            <div class="form-group">
+                <input type="text" id="firstName" placeholder="Full Name" required>
+            </div>
+            <!-- <div class="form-group">
+                <input type="text" id="lastName" placeholder="Last Name" required>
+            </div> -->
+            <div class="form-group">
+                <input type="tel" id="phone" placeholder="Phone No" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+    <input type="password" id="signUpPassword" name="password" placeholder="Password" required>
+</div>
+<div class="form-group">
+    <input type="password" id="signUpConfirmPassword" name="confirm-password" placeholder="Confirm Password" required>
+    <!-- <small id="passwordMismatch" class="form-text text-danger d-none">Passwords do not match.</small> -->
+</div>
+
+            <div class="form-group">
+                <select id="gender" required>
+                    <option value="" disabled selected >Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="number" id="age" placeholder="Age" required>
+            </div>
+            <button type="button" class="next-button" id="openPaymentModal">Next</button>
+        </form>
+    </div>
+</div>
+
+<!-- Payment Modal --><div id="paymentModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2 style="color: #fff;">Payment Details</h2>
+
+        <form id="payment-form">
+            <div class="form-group">
+                <input type="text" id="cardholderName" placeholder="Cardholder Name" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="cardNumber" placeholder="Card Number" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="expiryDate" placeholder="Expiry Date (MM/YY)" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="cvc" placeholder="CVC" required>
+            </div>
+
+            <!-- New Pricing Plan and Total Section -->
+            <!-- <div class="pricing-details">
+                <div class="pricing-plan">
+                    <strong>Plan:</strong> <span id="pricingPlan">Beginner</span>
+                </div>
+                <div class="total-amount">
+                    <strong>Total:</strong> <span id="totalAmount">$49</span>
+                </div>
+            </div> -->
+             <div class="form-group">
+          <select  id="signUpPlan" name="plan" required>
+            <option value="" disabled selected>Select Preferred Plan</option>
+            <option value="Basic Plan">Basic</option>
+            <option value="Standard Plan">Standard</option>
+            <option value="Premium Plan">Premium</option>
+          </select>
+        </div>
+    <div class="form-group">
+    <input type="text"  id="signUpPrice" name="price" placeholder="Price" readonly>
+</div>
+            <button type="submit" class="submit-button">Pay Now</button>
+            <div class="error-message" id="error-message"></div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#openPaymentModal').on('click', function() {
+            if ($('#signup-form')[0].checkValidity()) {
+                $('#paymentModal').fadeIn();
+            } else {
+                $('#signup-form')[0].reportValidity();
+            }
+        });
+        $('#closeModal').on('click', function() {
+            $('#paymentModal').fadeOut();
+        });
+
+        $(window).on('click', function(event) {
+            if ($(event.target).is('#paymentModal')) {
+                $('#paymentModal').fadeOut();
+            }
+        });
+
+        $('#payment-form').on('submit', function(event) {
+            event.preventDefault();
+
+            const cardholderName = $('#cardholderName').val();
+            const cardNumber = $('#cardNumber').val();
+            const expiryDate = $('#expiryDate').val();
+            const cvc = $('#cvc').val();
+
+            if (!cardholderName || !cardNumber || !expiryDate || !cvc) {
+                $('#error-message').text('Please fill in all fields.');
+                return;
+            }
+
+            // Simulating payment process
+            $.ajax({
+                url: '/api/complete-payment',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    cardholderName: cardholderName,
+                    cardNumber: cardNumber,
+                    expiryDate: expiryDate,
+                    cvc: cvc
+                }),
+                success: function(response) {
+                    alert('Payment successful! Redirecting to your profile...');
+                    window.location.href = '/profile.html';
+                },
+                error: function() {
+                    $('#error-message').text('Payment failed. Please try again.');
+                }
+            });
+        });
+    });
+    document.getElementById('gender').addEventListener('change', function() {
+    if (this.value === "") {
+        this.style.color = "#666";
+    } else {
+        this.style.color = "#000";
+    }
+});
+  function getQueryParams() {
+	const params = new URLSearchParams(window.location.search);
+	return {
+		plan: params.get('plan'),
+		price: params.get('price')
+	};
+}
+function populateForm() {
+	const { plan, price } = getQueryParams();
+
+	if (plan) {
+		const planSelect = document.getElementById('signUpPlan');
+		planSelect.value = plan;
+		planSelect.disabled = true;
+	}
+
+	if (price) {
+		const priceInput = document.getElementById('signUpPrice');
+		priceInput.value = price;
+		priceInput.readOnly = true;
+	}
+}
+document.addEventListener('DOMContentLoaded', populateForm);
+$(document).ready(function () {
+        $('#signUpPlan').on('change', function () {
+            const selectedPlan = $(this).val();
+            const priceField = $('#signUpPrice');
+
+            let price = '';
+            if (selectedPlan === 'Basic Plan') {
+                price = '$49/month';
+            } else if (selectedPlan === 'Standard Plan') {
+                price = '$79/month';
+            } else if (selectedPlan === 'Premium Plan') {
+                price = '$99/month';
+            }
+
+            priceField.val(price);
+        });
+    });
+
+</script>
+
+</body>
+</html>
