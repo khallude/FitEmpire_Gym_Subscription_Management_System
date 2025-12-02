@@ -1,5 +1,5 @@
 
-# FitEmpire – Gym Subscription Management System (Frontend)
+# FitEmpire – Gym Subscription Management System
 
 ## 1. Overview
 
