@@ -3,8 +3,7 @@
 
 ## 1. Overview
 
-FitEmpire is a frontend gym subscription management system designed to move traditional gym operations to a modern, web-based platform. It allows users to browse and compare gym plans, view pricing and benefits, access a basic nutrition section, and explore membership details through a clean, responsive UI. The project focuses on practising modern frontend development with HTML, CSS/SCSS, Bootstrap, JavaScript, and jQuery, and is designed to integrate with a Firebase backend for data and auth.
-
+FitEmpire is a frontend gym subscription management system designed to move traditional gym operations to a modern, web-based platform. It allows users to browse and compare gym plans, view pricing and benefits, access a basic nutrition section, and explore membership details through a clean, responsive UI. The project focuses on practising modern frontend development with HTML, CSS/SCSS, Bootstrap, JavaScript, and jQuery. 
 ## 2. Features
 
 ### User-Side Features
@@ -77,6 +76,5 @@ cd GYM_SUBSCRIPTION_MANAGEMENT_SYSTEM_FITEMPIRE
 ## 7. Credits
 FitEmpire – Gym Subscription Management System
 Developed as part of an academic project focusing on web application design and gym management workflows.
-
 FitEmpire – Gym Subscription Management System  
 Developed as part of an academic project focusing on web application design and gym management workflows.
